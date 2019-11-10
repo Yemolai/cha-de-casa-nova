@@ -1,9 +1,11 @@
 <template>
   <div>
     <q-page class="flex flex-center column">
-      <ArchText class="curved-text">
-        Lista completa para
-      </ArchText>
+      <div class="curved-text-wrapper">
+        <ArchText class="curved-text">
+          Lista completa para
+        </ArchText>
+      </div>
       <q-icon name="img:statics/icons/icons8-kitchenwares-96.png" size="96px"/>
       <h1 class="text-h6 text-center text-uppercase text-weight-bold text-primary">
         Chá de casa nova
@@ -90,18 +92,22 @@ export default {
 </script>
 
 <style lang="scss">
-.curved-text {
-  margin-bottom: -4em;
-  path {
-    fill: transparent;
-  }
+.curved-text-wrapper {
+  width: 24em;
+  max-width: 90%;
+  &>.curved-text {
+    margin-bottom: -4em;
+    path {
+      fill: transparent;
+    }
 
-  text {
-    fill: $primary;
-    font-size: 2.8em;
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 600;
-    text-transform: uppercase;
+    text {
+      fill: $primary;
+      font-size: 2.8em;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
   }
 }
 </style>
