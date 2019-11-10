@@ -1,5 +1,5 @@
 <template>
-  <div class="wish-list">
+  <div class="wish-list-wrapper">
     <div class="title">
       <q-icon class="icon" :name="icon" size="64px"/>
       <span class="text">{{ title }}</span>
@@ -37,8 +37,12 @@ export default {
 <style lang="scss" scoped>
 @import '../../css/mixins.scss';
 
-.wish-list {
-  .title {
+.wish-list-wrapper {
+  max-width: 80vw;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  &>.title {
     vertical-align: bottom;
     .icon {
       margin-bottom: 0.2em;
@@ -50,6 +54,10 @@ export default {
       color: $accent;
       vertical-align: bottom;
     }
+  }
+  &>.wish-list {
+    display: flex;
+    flex-direction: column;
   }
 }
 </style>

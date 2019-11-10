@@ -3,4 +3,5 @@
 
 body {
   @include primary-font();
+  scroll-behavior: smooth;
 }

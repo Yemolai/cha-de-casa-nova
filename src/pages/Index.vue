@@ -11,9 +11,9 @@
         Chá de casa nova
       </h1>
     </q-page>
-    <q-page class="q-mt-xl q-mb-xl">
-      <div class="flex flex-wrap justify-around">
-        <WishList v-for="(section, k) of lists" :key="k" v-bind="section"/>
+    <q-page class="flex justify-center row q-mt-xl q-mb-xl" id="wish-lists">
+      <div class="wish-lists-container">
+        <WishList class="wish-list" v-for="(section, k) of lists" :key="k" v-bind="section"/>
       </div>
     </q-page>
   </div>
@@ -84,6 +84,44 @@ export default {
             { name: 'Tábua plástica', checked: false },
             { name: 'Tesoura de cozinha', checked: false }
           ]
+        },
+        {
+          icon: 'img:statics/icons/icons8-double-bed-64.png',
+          title: 'Quarto',
+          items: [
+            { name: 'Abajur', checked: true },
+            { name: 'Almofadas', checked: true },
+            { name: 'Cabides', checked: true },
+            { name: 'Cabideiro', checked: true },
+            { name: 'Cobertor', checked: true },
+            { name: 'Espelho', checked: true },
+            { name: 'Jogo de cama', checked: true },
+            { name: 'Lençol', checked: true },
+            { name: 'Protetor de colchão', checked: true },
+            { name: 'Protetor de travesseiro', checked: true },
+            { name: 'Roupões', checked: true },
+            { name: 'Saia para cama box', checked: true },
+            { name: 'Sapateira', checked: true },
+            { name: 'Travesseiros', checked: true }
+          ]
+        },
+        {
+          icon: 'img:statics/icons/',
+          title: 'Banheiro',
+          items: [
+            { name: 'Baldes de plástico', checked: false },
+            { name: 'Capacho', checked: false },
+            { name: 'Cesto para roupa', checked: false },
+            { name: 'Desentupidor de pia', checked: false },
+            { name: 'Escova para vaso sanitário', checked: false },
+            { name: 'Lixeira', checked: false },
+            { name: 'Porta-escova de dentes', checked: false },
+            { name: 'Porta-sabonete', checked: false },
+            { name: 'Tapete antiaderente para box', checked: false },
+            { name: 'Toalha de banho', checked: false },
+            { name: 'Toalha de mãos', checked: false },
+            { name: 'Toalha de rosto', checked: false }
+          ]
         }
       ]
     }
@@ -108,6 +146,18 @@ export default {
       font-weight: 600;
       text-transform: uppercase;
     }
+  }
+}
+.wish-lists-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  flex-flow: column wrap;
+  width: 75vw;
+  &>.wish-list {
+    flex-shrink: 1;
+    max-width: 50%;
+    min-width: 25em;
   }
 }
 </style>
