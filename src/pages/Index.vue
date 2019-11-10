@@ -1,14 +1,9 @@
 <template>
   <div>
     <q-page class="flex flex-center column">
-      <svg class="curved-text" viewBox="0 0 500 160">
-        <path id="curve" d="M73.2,148.6c4-6.1,65.5-96.8,178.6-95.6c111.3,1.2,170.8,90.3,175.1,97" />
-        <text width="500">
-          <textPath xlink:href="#curve">
-            Lista completa para
-          </textPath>
-        </text>
-      </svg>
+      <ArchText class="curved-text">
+        Lista completa para
+      </ArchText>
       <q-icon name="img:statics/icons/icons8-kitchenwares-96.png" size="96px"/>
       <h1 class="text-h6 text-center text-uppercase text-weight-bold text-primary">
         Chá de casa nova
@@ -16,20 +11,23 @@
     </q-page>
     <q-page>
       <div class="flex flex-wrap justify-around">
-
+        list here
       </div>
     </q-page>
   </div>
 </template>
 
 <script>
+import ArchText from 'components/ArchText'
+
 export default {
-  name: 'PageIndex'
+  name: 'PageIndex',
+  components: { ArchText }
 }
 </script>
 
 <style lang="scss">
-svg.curved-text {
+.curved-text {
   margin-bottom: -4em;
   path {
     fill: transparent;
