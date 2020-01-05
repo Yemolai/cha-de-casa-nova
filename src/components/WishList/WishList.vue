@@ -4,7 +4,7 @@
       <q-icon class="icon" :name="icon" size="64px"/>
       <span class="text">{{ title }}</span>
     </div>
-    <ul class="wish-list">
+    <ul v-masonry class="wish-list">
       <WishListItem
         class="wish-list-item"
         v-for="(item, k) in items"
