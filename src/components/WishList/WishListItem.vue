@@ -53,6 +53,7 @@ li.wish-list-item {
   }
   .text {
     @include section-font();
+    margin-right: 1em;
     font-size: 2em;
     color: $primary;
   }
