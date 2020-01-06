@@ -12,8 +12,8 @@
       </h1>
     </q-page>
     <q-page class="flex justify-center row q-mt-xl q-mb-xl" id="wish-lists">
-      <div class="wish-lists-container">
-        <WishList class="wish-list" v-for="(section, k) of lists" :key="k" v-bind="section"/>
+      <div v-masonry class="wish-lists-container">
+        <WishList v-masonry-tile class="wish-list" v-for="(section, k) of lists" :key="k" v-bind="section"/>
       </div>
     </q-page>
   </div>
@@ -26,104 +26,17 @@ import WishList from 'components/WishList/WishList'
 export default {
   name: 'PageIndex',
   components: { ArchText, WishList },
-  data () {
-    return {
-      lists: [
-        {
-          icon: 'img:statics/icons/icons8-kitchen-64.png',
-          title: 'Cozinha',
-          items: [
-            { name: 'Abridor de latas', checked: false },
-            { name: 'Abridor de garrafas', checked: false },
-            { name: 'Açucareiro', checked: true },
-            { name: 'Afiador de facas', checked: false },
-            { name: 'Assadeira', checked: false },
-            { name: 'Avental', checked: undefined },
-            { name: 'Bandejas', checked: false },
-            { name: 'Batedor de ovos', checked: true },
-            { name: 'Chaleira', checked: true },
-            { name: 'Coador de café', checked: true },
-            { name: 'Colher de sorvete', checked: true },
-            { name: 'Colheres de silicone', checked: true },
-            { name: 'Colheres de pau', checked: false },
-            { name: 'Concha para molhos', checked: false },
-            { name: 'Copo medidor', checked: false },
-            { name: 'Cortador de pizza', checked: false },
-            { name: 'Descanso de panela', checked: false },
-            { name: 'Descascador de legumes', checked: false },
-            { name: 'Escorredor de arroz', checked: false },
-            { name: 'Escorredor de macarrão', checked: false },
-            { name: 'Escorredor de louças', checked: false },
-            { name: 'Escumadeira', checked: false },
-            { name: 'Espremedor de alho', checked: false },
-            { name: 'Forma de gelo', checked: false },
-            { name: 'Frigideira', checked: false },
-            { name: 'Lixeira para pia', checked: false },
-            { name: 'Luva térmica', checked: false },
-            { name: 'Jogo de panelas', checked: false },
-            { name: 'Jogo de copos', checked: false },
-            { name: 'Jogo de talheres', checked: false },
-            { name: 'Jogo de xícaras', checked: false },
-            { name: 'Paliteiro', checked: false },
-            { name: 'Pegador de massas', checked: false },
-            { name: 'Pegador de saladas', checked: false },
-            { name: 'Petisqueira', checked: false },
-            { name: 'Pincel culinário', checked: false },
-            { name: 'Potes', checked: false },
-            { name: 'Pratos', checked: false },
-            { name: 'Pratos para sobremesa', checked: false },
-            { name: 'Porta-guardanapos', checked: false },
-            { name: 'Porta-temperos', checked: false },
-            { name: 'Puxa saco', checked: false },
-            { name: 'Ralador de queijos', checked: false },
-            { name: 'Rodo para pia', checked: false },
-            { name: 'Rolo de abrir massas', checked: false },
-            { name: 'Saladeira', checked: false },
-            { name: 'Saleiro e pimenteiro', checked: false },
-            { name: 'Tábua para queijos', checked: false },
-            { name: 'Tábua plástica', checked: false },
-            { name: 'Tesoura de cozinha', checked: false }
-          ]
-        },
-        {
-          icon: 'img:statics/icons/icons8-double-bed-64.png',
-          title: 'Quarto',
-          items: [
-            { name: 'Abajur', checked: true },
-            { name: 'Almofadas', checked: true },
-            { name: 'Cabides', checked: true },
-            { name: 'Cabideiro', checked: true },
-            { name: 'Cobertor', checked: true },
-            { name: 'Espelho', checked: true },
-            { name: 'Jogo de cama', checked: true },
-            { name: 'Lençol', checked: true },
-            { name: 'Protetor de colchão', checked: true },
-            { name: 'Protetor de travesseiro', checked: true },
-            { name: 'Roupões', checked: true },
-            { name: 'Saia para cama box', checked: true },
-            { name: 'Sapateira', checked: true },
-            { name: 'Travesseiros', checked: true }
-          ]
-        },
-        {
-          icon: 'img:statics/icons/',
-          title: 'Banheiro',
-          items: [
-            { name: 'Baldes de plástico', checked: false },
-            { name: 'Capacho', checked: false },
-            { name: 'Cesto para roupa', checked: false },
-            { name: 'Desentupidor de pia', checked: false },
-            { name: 'Escova para vaso sanitário', checked: false },
-            { name: 'Lixeira', checked: false },
-            { name: 'Porta-escova de dentes', checked: false },
-            { name: 'Porta-sabonete', checked: false },
-            { name: 'Tapete antiaderente para box', checked: false },
-            { name: 'Toalha de banho', checked: false },
-            { name: 'Toalha de mãos', checked: false },
-            { name: 'Toalha de rosto', checked: false }
-          ]
-        }
-      ]
+  mounted () {
+    this.loadLists()
+  },
+  computed: {
+    lists () {
+      return this.$store.getters['lists/all']
+    }
+  },
+  methods: {
+    async loadLists () {
+      await this.$store.dispatch(`lists/load`)
     }
   }
 }
@@ -156,7 +69,7 @@ export default {
   width: 75vw;
   &>.wish-list {
     flex-shrink: 1;
-    max-width: 50%;
+    max-width: 100%;
     min-width: 25em;
   }
 }
