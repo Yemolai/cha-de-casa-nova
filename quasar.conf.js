@@ -1,6 +1,8 @@
 // Configuration for your app
 // https://quasar.dev/quasar-cli/quasar-conf-js
 
+const { FIREBASE_CONFIG } = process.env
+
 module.exports = function (ctx) {
   return {
     // app boot file (/src/boot)
@@ -8,6 +10,7 @@ module.exports = function (ctx) {
     // https://quasar.dev/quasar-cli/cli-documentation/boot-files
     boot: [
       'axios',
+      'firebase',
       'masonry'
     ],
 
@@ -79,7 +82,7 @@ module.exports = function (ctx) {
       // analyze: true,
       // preloadChunks: false,
       // extractCSS: false,
-
+      env: { FIREBASE_CONFIG },
       // https://quasar.dev/quasar-cli/cli-documentation/handling-webpack
       extendWebpack (cfg) {
         cfg.module.rules.push({
