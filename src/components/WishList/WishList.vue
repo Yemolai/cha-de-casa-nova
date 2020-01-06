@@ -4,7 +4,7 @@
       <q-icon class="icon" :name="icon" size="64px"/>
       <span class="text">{{ title }}</span>
     </div>
-    <ul v-masonry class="wish-list">
+    <ul class="wish-list">
       <WishListItem
         class="wish-list-item"
         v-for="(item, k) in items"
@@ -38,10 +38,9 @@ export default {
 @import '../../css/mixins.scss';
 
 .wish-list-wrapper {
-  max-width: 80vw;
   display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   &>.title {
     vertical-align: bottom;
     .icon {

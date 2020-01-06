@@ -1,5 +1,5 @@
 <template>
-  <li v-masonry-tile class="wish-list-item">
+  <li class="wish-list-item">
     <div class="box" @input="$emit('input', !item.checked)">
       <q-icon
         key="checkbox"
