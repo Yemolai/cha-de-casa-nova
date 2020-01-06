@@ -6,15 +6,18 @@ import 'firebase/firestore'
 import 'firebase/messaging'
 import 'firebase/storage'
 
-const { VUE_FIREBASE_CONFIG: firebaseConfig } = process.env
+const { FIREBASE_CONFIG } = process.env
 
 export default async ({ router, Vue }) => {
+  const firebaseConfig = JSON.parse(FIREBASE_CONFIG)
   if (!firebaseConfig) {
     console.error('missing firebase config on env variable VUE_FIREBASE_CONFIG')
     return
   }
 
-  Vue.prototype.$firebase = firebase.initializeApp(firebaseConfig, 'IsaGabChaDeCasaNova')
+  const app = firebase.initializeApp(firebaseConfig)
+
+  Vue.prototype.$firebase = app
 
   router.beforeEach((to, _from, next) => {
     if (to.meta.private) {
