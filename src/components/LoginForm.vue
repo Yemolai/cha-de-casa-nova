@@ -10,9 +10,12 @@
         <div class="column">
           <q-input label="Email" v-model="form.email" type="email" />
           <q-input label="Password" v-model="form.password" type="password" />
-          <div class="row reverse q-py-md">
-            <q-btn unelevated @click="login" color="positive">
+          <div class="row reverse justify-between q-py-md">
+            <q-btn unelevated @click="login" color="primary">
               Sign in
+            </q-btn>
+            <q-btn flat color="secondary">
+              Register
             </q-btn>
           </div>
         </div>
@@ -21,11 +24,11 @@
     <q-separator />
     <q-card-actions class="column q-mt-md">
       <div class="row justify-center">
-        <span class="text-subtitle1">
+        <span class="text-subtitle1 Quicksand text-dark">
           Or login with
         </span>
       </div>
-      <div class="row justify-around items-center">
+      <div class="row justify-around items-center q-mt-md">
         <q-btn
           class="q-mr-sm"
           color="red-4"
