@@ -1,7 +1,25 @@
 // app global css in SCSS form
 @import './mixins.scss';
+@import './quasar.variables.scss';
+
+.text-dark {
+  color: $dark;
+}
+
+.q-btn {
+  padding-left: 20px;
+  padding-right: 20px;
+  & .q-btn__content > i {
+    margin-right: 0.5em;
+    margin-bottom: 0.1em;
+  }
+}
+
+.app {
+  @include primary-font();
+  @extend .text-dark;
+}
 
 body {
-  @include primary-font();
   scroll-behavior: smooth;
 }

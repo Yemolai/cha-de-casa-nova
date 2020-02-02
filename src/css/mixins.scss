@@ -3,22 +3,42 @@
 @import url('https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Maven+Pro&display=swap');
 
-@mixin primary-font {
+.PermanentMarker {
+  font-family: 'Permanent Marker', cursive;
+}
+
+.Quicksand {
   font-family: 'Quicksand', sans-serif;
 }
 
-@mixin secondary-font {
+.MavenPro {
   font-family: 'Maven Pro', sans-serif;
 }
 
-@mixin section-font {
-  font-family: 'Amatic SC', cursive;
-}
-
-@mixin title-font {
+.Sacramento {
   font-family: 'Sacramento', cursive;
 }
 
+.AmaticSC {
+  font-family: 'Amatic SC', cursive;
+}
+
+@mixin primary-font {
+  @extend .Quicksand;
+}
+
+@mixin secondary-font {
+  @extend .MavenPro;
+}
+
+@mixin section-font {
+  @extend .AmaticSC;
+}
+
+@mixin title-font {
+  @extend .Sacramento;
+}
+
 @mixin highlight-font {
-  font-family: 'Permanent Marker', cursive;
+  @extend .PermanentMarker;
 }
