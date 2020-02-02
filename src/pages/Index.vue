@@ -6,7 +6,7 @@
           Lista completa para
         </ArchText>
       </div>
-      <q-icon name="img:statics/icons/icons8-kitchenwares-96.png" size="96px"/>
+      <icon8 name="kitchenwares" size="96px" />
       <h1 class="text-h6 text-center text-uppercase text-weight-bold text-primary">
         Chá de casa nova
       </h1>
@@ -22,10 +22,11 @@
 <script>
 import ArchText from 'components/ArchText'
 import WishList from 'components/WishList/WishList'
+import Icon8 from 'components/Layout/Icon8.component'
 
 export default {
   name: 'PageIndex',
-  components: { ArchText, WishList },
+  components: { ArchText, Icon8, WishList },
   mounted () {
     this.loadLists()
   },
