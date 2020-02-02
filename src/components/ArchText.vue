@@ -16,8 +16,8 @@ svg.arch-text {
 
   text {
     fill: $primary;
-    font-size: 2.8em;
-    font-weight: 600;
+    font-size: 2.35rem;
+    font-weight: 500;
   }
 }
 </style>
