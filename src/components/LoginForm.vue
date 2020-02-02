@@ -14,7 +14,7 @@
             <q-btn unelevated @click="login" color="primary">
               Sign in
             </q-btn>
-            <q-btn flat color="secondary">
+            <q-btn flat color="secondary" to="register">
               Register
             </q-btn>
           </div>

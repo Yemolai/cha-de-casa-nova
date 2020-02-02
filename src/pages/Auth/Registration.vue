@@ -1,11 +1,14 @@
 <template>
-  <q-page padding>
-    <!-- content -->
+  <q-page class="flex items-center justify-center" padding>
+    <user-sign-up />
   </q-page>
 </template>
 
 <script>
+import UserSignUp from 'components/Forms/UserSignUp.component.vue'
+
 export default {
-  // name: 'PageName',
+  name: 'Auth.Registration.page',
+  components: { UserSignUp }
 }
 </script>
