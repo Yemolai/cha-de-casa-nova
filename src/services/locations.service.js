@@ -11,12 +11,14 @@ const municipiosIn = (ufId) => `localidades/estados/${ufId}/municipios`
 const servicoDadosIBGE = Axios.create({ baseURL: servicoDadosIBGEURL })
 
 export const locations = {
-  async getUFs () {
-    const { data: UFsList } = await servicoDadosIBGE.get(UFsURI())
+  getUFs () {
+    return servicoDadosIBGE.get(UFsURI())
+      .then(({ data: UFsList }) => {
+        const UFs = UFsList.map(({ id, sigla, nome }) => ({ id, sigla, nome }))
+          .sort(({ sigla: a }, { sigla: b }) => a < b ? -1 : a > b ? 1 : 0)
+        return UFs
+      })
       .catch(err => { throw err })
-    const UFs = UFsList.map(({ id, sigla, nome }) => ({ id, sigla, nome }))
-      .sort(({ sigla: a }, { sigla: b }) => a < b ? -1 : a > b ? 1 : 0)
-    return UFs
   },
   async getMunicipios (UFId) {
     if (!isNumber(UFId) || UFId < 1 || UFId > 53) {

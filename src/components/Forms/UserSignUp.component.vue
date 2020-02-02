@@ -59,6 +59,7 @@
             hide-hint
             :options="states"
             v-model="form.state"
+            @input="updateCities"
             label="State"
             hint="not of the mind" />
         </div>
@@ -66,7 +67,8 @@
           <q-select
             hide-hint
             :options="cities"
-            :readonly="!form.state"
+            :readonly="!form.state || loadingCities"
+            :loading="loadingCities"
             v-model="form.city"
             label="City"
             hint="So we can plan to visit" />
@@ -96,8 +98,7 @@ export default {
   name: 'UserSignUp',
   components: { QCard, QCardSection, QInput, QSelect },
   created () {
-    this.$services.locations.getUFs()
-      .then(UFs => { this.states = UFs })
+    this.loadUFs()
   },
   data () {
     const restrictions = restrictionList.slice(0).sort()
@@ -105,9 +106,13 @@ export default {
     return {
       restrictions,
       states: [],
+      cities: [],
+      loadingCities: false,
       form: {
         email: null,
-        password: null
+        password: null,
+        state: null,
+        city: null
       }
     }
   },
@@ -123,6 +128,19 @@ export default {
     },
     goesByOtherName () {
       return this.preferredName && this.preferredName.value === 'other'
+    }
+  },
+  methods: {
+    async loadUFs () {
+      const UFs = await this.$services.locations.getUFs()
+      this.states = UFs.map(({ id: value, sigla: label }) => ({ value, label }))
+    },
+    async updateCities ({ value: UFId }) {
+      this.loadingCities = true
+      this.form.city = null
+      const municipios = await this.$services.locations.getMunicipios(UFId)
+      this.cities = municipios.map(({ id: value, nome: label }) => ({ value, label }))
+      this.loadingCities = false
     }
   }
 }
